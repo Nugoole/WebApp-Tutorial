@@ -1,0 +1,20 @@
+﻿@page
+@model WebAppRazor_ChatDB.Pages.MyRoomsModel
+@{
+    ViewData["Title"] = "My Chat Rooms";
+}
+
+<body>
+    <p>
+        <a  asp-page="Rooms/Create" >New Room</a>
+    </p>
+    <h1>My Chat Rooms</h1>
+
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rooms[0].RoomName);
+            </th>
+        </tr>
+    </table>
+</body>

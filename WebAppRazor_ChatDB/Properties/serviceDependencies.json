@@ -2,11 +2,11 @@
   "dependencies": {
     "mssql1": {
       "type": "mssql",
-      "connectionId": "MovieContext"
+      "connectionId": "ConnectionStrings:UserContext"
     },
     "mssql2": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:UserContext"
+      "connectionId": "ConnectionStrings:RoomContext"
     }
   }
 }
