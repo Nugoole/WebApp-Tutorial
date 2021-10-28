@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebAppRazor_ChatDB.Data;
 using WebAppRazor_ChatDB.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebAppRazor_ChatDB.Pages.Rooms
 {
@@ -35,11 +36,15 @@ namespace WebAppRazor_ChatDB.Pages.Rooms
             {
                 return Page();
             }
-            
-            _context.Room.Add(Room);
-            await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+
+
+            _context.Database.ExecuteSqlRaw("CreateRoomChat @p0, @p1, @p2", parameters: new[] { CurrentUser.UserID, Room.RoomID, Room.RoomName });
+
+            //_context.Room.Add(Room);
+            //await _context.SaveChangesAsync();
+
+            return RedirectToPage("../MyRooms");
         }
     }
 }

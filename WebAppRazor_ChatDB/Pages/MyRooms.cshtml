@@ -11,10 +11,14 @@
     <h1>My Chat Rooms</h1>
 
     <table>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Rooms[0].RoomName);
-            </th>
-        </tr>
+        @foreach (var room in Model.MyRooms)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(model=>room.RoomName)
+                </th>
+            </tr>
+        }
+
     </table>
 </body>

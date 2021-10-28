@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using WebAppRazor_ChatDB.Data;
+using WebAppRazor_ChatDB.Model;
 
 namespace WebAppRazor_ChatDB.Pages
 {
@@ -37,7 +38,13 @@ namespace WebAppRazor_ChatDB.Pages
             var foundUser = _context.User.FindAsync(id);
 
             if (foundUser.Result != null)
+            {
+                CurrentUser.IsLoggedIn = true;
+                CurrentUser.UserID = foundUser.Result.UserID;
+                CurrentUser.UserNickName = foundUser.Result.UserNickName;
                 return RedirectToPage("MyRooms");
+            }
+
             return RedirectToPage("./Error");
         }
     }

@@ -14,7 +14,7 @@ namespace WebAppRazor_ChatDB.Model
 
         public Room()
         {
-            RoomID = Guid.NewGuid().ToString();
+            RoomID = Guid.NewGuid().ToString().Split('-').FirstOrDefault();
         }
     }
 }
