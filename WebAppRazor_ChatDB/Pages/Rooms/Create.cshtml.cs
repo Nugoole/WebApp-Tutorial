@@ -39,7 +39,7 @@ namespace WebAppRazor_ChatDB.Pages.Rooms
 
 
 
-            _context.Database.ExecuteSqlRaw("CreateRoomChat @p0, @p1, @p2", parameters: new[] { CurrentUser.UserID, Room.RoomID, Room.RoomName });
+            _context.Database.ExecuteSqlRaw("CreateRoomChat @p0, @p1, @p2", parameters: new[] { Current.UserID, Room.RoomID, Room.RoomName });
 
             //_context.Room.Add(Room);
             //await _context.SaveChangesAsync();

@@ -24,7 +24,7 @@ namespace WebAppRazor_ChatDB.Pages
 
         public void OnGet()
         {
-            MyRooms = _context.Room.FromSqlRaw("GetMyRooms @p0", new[] { CurrentUser.UserID }).ToList();
+            MyRooms = _context.Room.FromSqlRaw("GetMyRooms @p0", new[] { Current.UserID }).ToList();
 
         }
     }

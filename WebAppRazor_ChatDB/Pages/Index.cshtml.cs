@@ -39,9 +39,9 @@ namespace WebAppRazor_ChatDB.Pages
 
             if (foundUser.Result != null)
             {
-                CurrentUser.IsLoggedIn = true;
-                CurrentUser.UserID = foundUser.Result.UserID;
-                CurrentUser.UserNickName = foundUser.Result.UserNickName;
+                Current.IsLoggedIn = true;
+                Current.UserID = foundUser.Result.UserID;
+                Current.UserNickName = foundUser.Result.UserNickName;
                 return RedirectToPage("MyRooms");
             }
 

@@ -11,6 +11,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebAppRazor_ChatDB.Data;
+using WebAppRazor_ChatDB.Hubs;
+using Microsoft.AspNetCore.ResponseCompression;
 
 namespace WebAppRazor_ChatDB
 {
@@ -33,6 +35,11 @@ namespace WebAppRazor_ChatDB
 
             services.AddDbContext<RoomContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("RoomContext")));
+
+            services.AddDbContext<ChatContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ChatContext")));
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +56,7 @@ namespace WebAppRazor_ChatDB
                 app.UseHsts();
             }
 
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -59,6 +67,7 @@ namespace WebAppRazor_ChatDB
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chathub");
             });
         }
     }

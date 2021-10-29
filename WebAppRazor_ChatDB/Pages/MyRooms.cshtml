@@ -6,7 +6,7 @@
 
 <body>
     <p>
-        <a  asp-page="Rooms/Create" >New Room</a>
+        <a asp-page="Rooms/Create">New Room</a>
     </p>
     <h1>My Chat Rooms</h1>
 
@@ -14,9 +14,12 @@
         @foreach (var room in Model.MyRooms)
         {
             <tr>
-                <th>
-                    @Html.DisplayFor(model=>room.RoomName)
-                </th>
+                <td>
+                    @Html.DisplayFor(model => room.RoomName)
+                </td>
+                <td>
+                    <a asp-page="./ChatRoom" asp-route-id="@room.RoomID">Get In</a>
+                </td>
             </tr>
         }
 
