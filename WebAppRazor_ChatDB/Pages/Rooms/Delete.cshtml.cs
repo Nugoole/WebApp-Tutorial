@@ -49,11 +49,11 @@ namespace WebAppRazor_ChatDB.Pages.Rooms
 
             if (Room != null)
             {
-                _context.Room.Remove(Room);
+                _context.Database.ExecuteSqlRaw("GetOutFromRoom @p0, @p1", parameters: new[] { Current.UserID, Room.RoomID });
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/MyRooms");
         }
     }
 }

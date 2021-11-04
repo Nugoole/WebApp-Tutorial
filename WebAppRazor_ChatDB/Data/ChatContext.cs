@@ -20,7 +20,8 @@ namespace WebAppRazor_ChatDB.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Chat>().ToTable($"Chat_{Current.RoomID}");
+
+            builder.Entity<Chat>().ToTable($"Chat_{Current.RoomID}").Property(f => f.ChatID).ValueGeneratedOnAdd();
         }
     }
 }

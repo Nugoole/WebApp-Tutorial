@@ -12,23 +12,23 @@ using WebAppRazor_ChatDB.Model;
 
 namespace WebAppRazor_ChatDB.Hubs
 {
-    public class ChatHub: Hub
+    public class ChatHub : Hub
     {
         private ChatContext _context;
         public ChatHub(ChatContext context)
         {
-           
             _context = context;
 
         }
 
         public async Task SendMessage(string message)
         {
-            _context.Add<Chat>(new Chat { UserID = Current.UserID, ChatDate = DateTime.Now.ToString(), ChatText = message });
+            _context.Add<Chat>(new Chat { UserID = Current.UserID, ChatDate = DateTime.Now, ChatText = message });
             await _context.SaveChangesAsync();
 
             var user = Current.UserNickName;
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
+        
     }
 }
